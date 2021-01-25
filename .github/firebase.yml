@@ -5,9 +5,9 @@ name: Firebase CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -28,11 +28,12 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - name: Archive build
+    - name: Archive Build
       uses: actions/upload-artifact@v2
-      with: 
+      with:
         name: build
         path: build
+        
   deploy:
     name: Deploy
     needs: build
@@ -43,10 +44,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: build 
-      - name: Deploy to Firebase
+          path: build
+      - name: Depoy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
-        env: 
-          FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
