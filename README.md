@@ -5,6 +5,7 @@
 - npm i react-hook-form
 - npm i react-dropzone
 - npm i libphonenumber-js
+- npm i @hookform/resolvers@0.1.0
 - npm install @material-ui/core
 - npm install @material-ui/icons
 - npm i yup (validation of fields)
